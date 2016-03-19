@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<title>Arduino Led Controller</title>
+<script>
+$(document).ready(function() {
+	$("#action").submit(function(evt) {
+		evt.preventDefault();
+		var dataString = $(this).find("button[type=submit]:focus" ).val();
+		$.ajax({
+               url:"Address IP of Arduino!",
+               type:"get",
+      		   data: {'status':dataString},
+      		 success:function(response) {
+          		 		if (response==1)
+				 			$("#lbl").html("LED ON").css("color","green");
+          		 		else 
+          		 			$("#lbl").html("LED OFF").css("color","red");
+		 		},
+		 		error:function(data) {
+			 		alert("Error");				}
+		});
+	});
+});
+</script>
+</head>
+<body>
+	<div class="container">		<div class="jumbotron" style="text-align: center;">
+			<h1>Arduino Led Controller</h1>
+		</div>
+	</div>
+	<div style="text-align: center;">
+	<label id="lbl"style="font-size:20px;"></label>
+	<form id='action'><br>
+		<p class="btn-group btn-group-lg" role="group">
+			<!-- create a button group -->
+			<button type="submit" id="status_led" class="btn btn-primary" value="1">ON</button>
+			<button type="submit" id="status_led" class="btn btn-primary" value="0">OFF</button>	
+		</p>
+	</form>
+	</div>
+</body>
+</html>
