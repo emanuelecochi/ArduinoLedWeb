@@ -36,7 +36,7 @@ bool readRequest(EthernetClient& client) {
       } else if (c == '\n') {
         currentLineIsBlank = true;     // new row
       } else if (c != '\r') {
-        currentLinesBlank = false;    // character of new line
+        currentLineIsBlank = false;    // character of new line
       }
     }
   }
